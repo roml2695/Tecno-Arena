@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecno Arena | Gamer Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo" onclick="navTo('welcome')">
+                <i class="fa-solid fa-gamepad"></i> TECNO ARENA
+            </div>
+
+            <nav class="main-nav">
+                <a href="#" onclick="navTo('welcome')">Inicio</a>
+                
+                <div class="dropdown">
+                    <a href="#">Clubes <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="navTo('club-info')">Información</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="#">Ligas <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="navTo('liga-info')">Información</a>
+                        <a href="#" onclick="navTo('ranking')">Ranking</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="user-area">
+                <div id="auth-buttons">
+                    <div class="login-inline">
+                        <input type="text" id="login-user" placeholder="Usuario/Correo">
+                        <input type="password" id="login-pass" placeholder="Clave">
+                        <button class="btn-neon-sm" onclick="login()">Login</button>
+                    </div>
+                    <button class="btn-register" onclick="navTo('register')">Registrarse</button>
+                </div>
+
+                <div id="user-panel" style="display: none;">
+                    <div id="header-avatar" class="profile-avatar-small" onclick="navTo('profile')"></div>
+                    
+                    <button id="btn-admin-panel" class="btn-admin hidden" onclick="navTo('admin-panel')">ADMIN</button>
+                    
+                    <button class="btn-panel" onclick="navTo('profile')" title="Perfil"><i class="fa-solid fa-user"></i></button>
+                    <button class="btn-panel" onclick="navTo('config')" title="Configuración"><i class="fa-solid fa-gear"></i></button>
+                    <button class="btn-logout" onclick="logout()" title="Cerrar Sesión"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-container">
+
+        <section id="welcome" class="main-section active">
+            <div class="hero">
+                <h1>BIENVENIDO A <span class="neon-text">TECNO ARENA</span></h1>
+                <p>La plataforma definitiva para la competición y comunidad gamer.</p>
+            </div>
+        </section>
+
+        <section id="club-info" class="main-section">
+            <h1 class="section-title">Membresías Tecno Arena</h1>
+            <div class="pricing-container">
+                <div class="price-card vip">
+                    <h2>Club VIP</h2>
+                    <div class="price">15$ <span class="period">/mes</span></div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> 50% Descuento en estaciones</li>
+                        <li><i class="fa-solid fa-check"></i> Sorteos exclusivos</li>
+                        <li><i class="fa-solid fa-check"></i> Ingreso GRATIS a Ligas</li>
+                    </ul>
+                </div>
+                <div class="price-card diamond">
+                    <h2>Club Diamante</h2>
+                    <div class="price">50$ <span class="period">/mes</span></div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> 100% Descuento en estaciones</li>
+                        <li><i class="fa-solid fa-check"></i> Sorteos y Sorpresas</li>
+                        <li><i class="fa-solid fa-check"></i> Ligas GRATIS</li>
+                        <li><i class="fa-solid fa-check"></i> Torneos GRATIS</li>
+                        <li><i class="fa-solid fa-check"></i> Entrada Akihabara Fest</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cta-box">
+                <h3>¿Quieres pertenecer a un club? Solicita tu inscripción aquí.</h3>
+                <div id="club-req-auth">
+                    <button class="btn-neon-lg" onclick="navTo('req-club')">Solicitud de Membresía</button>
+                </div>
+                <div id="club-req-guest" class="hidden warning-text">
+                    Para solicitar la inscripción de un club, inicia sesión.
+                </div>
+            </div>
+        </section>
+
+        <section id="liga-info" class="main-section">
+            <h1 class="section-title">Ligas Competitivas</h1>
+            <div class="info-box">
+                <p>Las Ligas en Tecno Arena tienen una duración de 3 Meses por Temporada.</p>
+                <p>Cada mes se realizan ascensos y descensos basados en el puntaje.</p>
+                <div class="divisions-grid">
+                    <div class="div-card diamante"><h3>Diamante</h3><p>La Élite</p></div>
+                    <div class="div-card oro"><h3>Oro</h3><p>Avanzado</p></div>
+                    <div class="div-card plata"><h3>Plata</h3><p>Intermedio</p></div>
+                    <div class="div-card bronce"><h3>Bronce</h3><p>Principiante</p></div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h3>¿Quieres participar?</h3>
+                <div id="league-req-auth">
+                    <button class="btn-neon-lg" onclick="navTo('req-liga')">Solicitud de Liga</button>
+                </div>
+                <div id="league-req-guest" class="hidden warning-text">
+                    Para solicitar la inscripción de una Liga, inicia sesión.
+                </div>
+            </div>
+        </section>
+
+        <section id="ranking" class="main-section">
+            <h1 class="section-title">Ranking</h1>
+            
+            <div class="game-selector">
+                <button class="btn-game active" onclick="setRankingGame('tekken')">Tekken 8</button>
+                <button class="btn-game" onclick="setRankingGame('smash')">Super Smash Bros</button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="ranking-search" placeholder="Buscar usuario..." onkeyup="filterRanking()">
+            </div>
+
+            <div class="division-selector">
+                <button class="btn-div active" onclick="setRankingDiv('diamante')">Diamante</button>
+                <button class="btn-div" onclick="setRankingDiv('oro')">Oro</button>
+                <button class="btn-div" onclick="setRankingDiv('plata')">Plata</button>
+                <button class="btn-div" onclick="setRankingDiv('bronce')">Bronce</button>
+            </div>
+
+            <div class="table-container">
+                <table id="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Jugador</th>
+                            <th>Puntaje</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranking-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="register" class="main-section">
+            <div class="form-box">
+                <h2>Registro</h2>
+                <input type="text" id="reg-name" placeholder="Nombre y Apellido">
+                <input type="text" id="reg-user" placeholder="Usuario (Nick)">
+                <input type="email" id="reg-email" placeholder="Correo">
+                <input type="tel" id="reg-phone" placeholder="Teléfono">
+                <select id="reg-sex">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="O">Otro</option>
+                </select>
+                <input type="password" id="reg-pass" placeholder="Clave">
+                <button class="btn-neon-lg" onclick="register()">Registrarse</button>
+            </div>
+        </section>
+
+        <section id="req-club" class="main-section">
+            <div class="form-box">
+                <h2>Solicitud Club</h2>
+                <select id="req-club-select">
+                    <option value="VIP">Club VIP</option>
+                    <option value="Diamante">Club Diamante</option>
+                </select>
+                <textarea id="req-club-msg" placeholder="Mensaje (Opcional)"></textarea>
+                <button class="btn-neon-lg" onclick="submitRequest('club')">Enviar</button>
+            </div>
+        </section>
+
+        <section id="req-liga" class="main-section">
+            <div class="form-box">
+                <h2>Solicitud Liga</h2>
+                <select id="req-liga-game">
+                    <option value="tekken">Tekken 8</option>
+                    <option value="smash">Super Smash Bros</option>
+                </select>
+                <textarea id="req-liga-msg" placeholder="Mensaje (Opcional)"></textarea>
+                <button class="btn-neon-lg" onclick="submitRequest('league')">Enviar</button>
+            </div>
+        </section>
+
+        <section id="profile" class="main-section">
+            <div class="profile-container">
+                <h2>Mi Perfil</h2>
+                <div class="profile-header-center">
+                    <div id="p-avatar-lg" class="avatar-large"></div>
+                </div>
+                <div class="profile-details">
+                    <p><strong>Nombre:</strong> <span id="p-name"></span></p>
+                    <p><strong>Nick:</strong> <span id="p-nick"></span></p>
+                    <p><strong>Correo:</strong> <span id="p-email"></span></p>
+                    <p><strong>Teléfono:</strong> <span id="p-phone"></span></p>
+                    <p><strong>Club:</strong> <span id="p-club" class="neon-text">Ninguna</span></p>
+                    <div id="p-leagues"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="config" class="main-section">
+            <div class="form-box">
+                <h2>Configuración</h2>
+                <input type="text" id="conf-name" placeholder="Nombre">
+                <input type="tel" id="conf-phone" placeholder="Teléfono">
+                <input type="password" id="conf-pass" placeholder="Nueva Clave">
+                <button class="btn-neon-sm" onclick="updateUser()">Guardar</button>
+                
+                <hr style="margin: 20px 0; border-color: #333;">
+                <h3>Estado Solicitudes</h3>
+                <div id="config-requests-status"></div>
+                
+                <hr style="margin: 20px 0; border-color: #333;">
+                <button class="btn-danger" onclick="deleteUser()">Borrar Cuenta</button>
+            </div>
+        </section>
+
+        <section id="admin-panel" class="main-section">
+            <h1 class="section-title">Panel de Control Admin</h1>
+            
+            <div class="admin-grid">
+                
+                <div class="admin-box">
+                    <h3>Asignar División</h3>
+                    <select id="adm-div-user"><option value="">Cargando...</option></select>
+                    <input type="text" id="adm-div-manual" placeholder="O usuario manual">
+                    <select id="adm-div-game">
+                        <option value="tekken">Tekken 8</option>
+                        <option value="smash">Super Smash Bros</option>
+                    </select>
+                    <select id="adm-div-rank">
+                        <option value="diamante">Diamante</option>
+                        <option value="oro">Oro</option>
+                        <option value="plata">Plata</option>
+                        <option value="bronce">Bronce</option>
+                    </select>
+                    <input type="number" id="adm-div-score" placeholder="Puntaje">
+                    <button class="btn-neon-sm" onclick="adminAssignLeague()">Asignar</button>
+                </div>
+
+                <div class="admin-box">
+                    <h3>Asignar Club</h3>
+                    <select id="adm-club-user"><option value="">Cargando...</option></select>
+                    <input type="text" id="adm-club-manual" placeholder="O usuario manual">
+                    <select id="adm-club-type">
+                        <option value="VIP">VIP</option>
+                        <option value="Diamante">Diamante</option>
+                    </select>
+                    <button class="btn-neon-sm" onclick="adminAssignClub()">Asignar</button>
+                </div>
+
+                <div class="admin-box">
+                    <h3>Permisos Admin</h3>
+                    <select id="adm-perm-user"><option value="">Cargando...</option></select>
+                    <button class="btn-neon-sm" onclick="adminMakeAdmin()">Hacer Admin</button>
+                </div>
+
+                <div class="admin-box">
+                    <h3>Base de Datos</h3>
+                    <button class="btn-danger" onclick="adminResetDB()">RESET DEFAULT</button>
+                </div>
+
+            </div>
+
+            <div class="admin-requests-container">
+                <h3>Solicitudes Recibidas</h3>
+                <ul id="admin-requests-list">
+                    </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <p>Contacto: +58 123 456 7890</p>
+                <p>contacto@tecnoarena.com</p>
+            </div>
+            <div class="footer-right">
+                <a href="#" onclick="navTo('welcome')">Inicio</a>
+                <a href="#" onclick="navTo('club-info')">Clubes</a>
+                <a href="#" onclick="navTo('liga-info')">Ligas</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
